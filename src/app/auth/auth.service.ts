@@ -24,7 +24,8 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
   
   signUp(email: string, password: string) {
-    return this.http.post<AuthResponseData>(environment.apiSignupUrl,
+    return this.http.post<AuthResponseData>(
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
     {
       email: email,
       password: password,
@@ -36,7 +37,7 @@ export class AuthService {
 
   logIn(email: string, password: string) {
     return this.http.post<AuthResponseData>(
-      environment.apiLoginUrl,
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey,
       {
         email: email,
         password: password,
