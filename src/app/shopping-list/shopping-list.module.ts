@@ -8,21 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { LoggingService } from '../logging.service';
 
 @NgModule({
-  declarations: [
-    ShoppingListComponent,
-    ShoppingEditComponent,
-  ],
-  imports: [
-    FormsModule,
-    RouterModule.forChild([
-      { path: '', component: ShoppingListComponent },
-    ]),
-    SharedModule,
-  ],
-  providers: [
-    LoggingService
-  ]
+  declarations: [ShoppingListComponent, ShoppingEditComponent],
+  imports: [FormsModule, RouterModule.forChild([{ path: '', component: ShoppingListComponent }]), SharedModule],
+  providers: [LoggingService],
 })
-export class ShoppingListModule {
-
-}
+export class ShoppingListModule {}

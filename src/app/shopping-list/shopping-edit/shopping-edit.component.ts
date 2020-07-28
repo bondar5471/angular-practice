@@ -1,27 +1,27 @@
-import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import * as ShoppingListActions from '../store/shopping-list.actions';
-import * as fromShoppingList from '../store/shopping-list.reducer';
+import * as fromApp from '../../strore/app.reducer';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css']
+  styleUrls: ['./shopping-edit.component.css'],
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('formData', { static: false }) slForm: NgForm;
   subscription: Subscription;
   editMode = false;
   editedItem: Ingredient;
-  
-  constructor(private store: Store<fromShoppingList.AppState>) { }
-  
+
+  constructor(private store: Store<fromApp.AppState>) {}
+
   ngOnInit(): void {
-    this.subscription = this.store.select('shoppingList').subscribe(stateData => {
+    this.subscription = this.store.select('shoppingList').subscribe((stateData) => {
       if (stateData.editedIngredientIndex > -1) {
         this.editMode = true;
         this.editedItem = stateData.editedIngredient;
@@ -36,11 +36,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    event.preventDefault()
+    event.preventDefault();
     const value = form.value;
-    const newIngredient = new Ingredient(value.name, value.amount)
+    const newIngredient = new Ingredient(value.name, value.amount);
     if (this.editMode) {
-      this.store.dispatch(new ShoppingListActions.UpdateIngredient(newIngredient))
+      this.store.dispatch(new ShoppingListActions.UpdateIngredient(newIngredient));
     } else {
       this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));
     }

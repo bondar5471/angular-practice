@@ -95,8 +95,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": ".eslintrc",
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
@@ -120,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "recipe-book"
+    }
+  },
+  "defaultProject": "recipe-book",
+  "cli": {
+    "analytics": "3336f3bd-f9d3-4635-9436-f3d657081615"
+  }
 }

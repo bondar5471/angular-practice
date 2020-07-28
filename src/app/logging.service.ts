@@ -7,7 +7,7 @@ export class LoggingService {
 
   printLog(message: string) {
     console.log(message);
-    console.log(this.lastLog)
+    console.log(this.lastLog);
     this.lastLog = message;
   }
 }
