@@ -10,7 +10,13 @@ import { LoggingService } from '../logging.service';
 @NgModule({
   declarations: [AlertComponent, SpinnerComponent, PlaceholderDirective, DropdownDirective],
   imports: [CommonModule],
-  exports: [AlertComponent, SpinnerComponent, PlaceholderDirective, DropdownDirective, CommonModule],
+  exports: [
+    AlertComponent,
+    SpinnerComponent,
+    PlaceholderDirective,
+    DropdownDirective,
+    CommonModule,
+  ],
   providers: [LoggingService],
 })
 export class SharedModule {}
